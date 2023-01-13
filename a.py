@@ -11,4 +11,25 @@ def main(page: ft.Page):
             ft.dropdown.Option("Al-Nassr"),
             ],autofocus=True,))
 
-ft.app(target=main)
+imagenes= ""
+
+def dropdown_changed(e):
+        if (main.value == "Aston Villa"):
+            imagenes = "imagenes/Aston-Villa.png"
+            print(f"fresa al poder {imagenes}")
+        elif (main.value == "Man United"):
+            imagenes = "imagenes/Man-United.png"
+            print("platano al poder")
+        elif (main.value == "Real Madrid"):
+            imagenes = "imagenes/Real Madrid.png"
+            print("platano al poder")
+        elif (main.value == "Juventus"):
+            imagenes = "imagenes/Juventus.png"
+            print("platano al poder")
+        elif (main.value == "Al-Nassr"):
+            imagenes = "imagenes/Al_Nassr.png"
+            print("platano al poder")
+        imagenes.src=f"{imagenes}"
+        page.update()
+
+ft.app(target=main,assets_dir="imagenes")
