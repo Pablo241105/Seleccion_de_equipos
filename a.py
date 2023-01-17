@@ -8,4 +8,6 @@ def main(page: ft.Page):
     
     img = ft.Image(src=f"imagenes/{EQUIPO}")
 
-    page.add(img, assets_dir="imagenes")
+    page.add(img)
+
+ft.app(target=main, assets_dir="imagenes")
