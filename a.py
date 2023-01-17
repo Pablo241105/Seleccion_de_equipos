@@ -21,8 +21,6 @@ def main(page: ft.Page):
             EQUIPO = "Al_Nassr.png"
             print(f"Al-Nassr {EQUIPO}")
 
-
-        img.src=f"{EQUIPO}"
         page.update()
 
     EQUIPOS = ft.Dropdown(label="Equipos",width=500,
@@ -37,3 +35,4 @@ def main(page: ft.Page):
     )
 
     page.add(EQUIPOS)
+ft.app(target=main)
