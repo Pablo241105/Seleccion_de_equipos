@@ -12,7 +12,7 @@ def main(page: ft.Page):
             EQUIPO = "imagenes/Man-United.png"
             print(f"Man United {EQUIPO}")
         elif (EQUIPOS.value == "Juventus"):
-            EQUIPO = "imagenes/Juventuspng"
+            EQUIPO = "imagenes/Juventus.png"
             print(f"Juventus {EQUIPO}")
         elif (EQUIPOS.value == "Real Madrid"):
             EQUIPO = "imagenes/Real Madrid.png"
@@ -38,12 +38,11 @@ def main(page: ft.Page):
 
     page.add(EQUIPOS)
     
-    img = ft.Image(
-            src=f"imagenes/{EQUIPO}"
-        )
+    img = ft.Image(src=f"imagenes/{EQUIPO}")
 
     page.add(img)
 
+<<<<<<< Updated upstream
 imagenes= ""
 
 def dropdown_changed(e):
@@ -66,3 +65,6 @@ def dropdown_changed(e):
         page.update()
 
 ft.app(target=main,assets_dir="imagenes")
+=======
+ft.app(target=main, assets_dir="imagenes")
+>>>>>>> Stashed changes
