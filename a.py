@@ -23,19 +23,6 @@ def main(page: ft.Page):
             EQUIPO = "Al_Nassr.png"
             print(f"Al-Nassr {EQUIPO}")
 
-        page.update()
+    page.add(img)
 
-    EQUIPOS = ft.Dropdown(label="Equipos",width=500,
-        options=[
-            ft.dropdown.Option("Aston Villa"),
-            ft.dropdown.Option("Man United"),
-            ft.dropdown.Option("Real Madrid"),
-            ft.dropdown.Option("Juventus"),
-            ft.dropdown.Option("Al-Nassr"),
-        ],
-        on_change=dropdown_changed
-    )
-
-    page.add(EQUIPOS)
-ft.app(target=main)
->>>>>>> DropdownMenu
+ft.app(target=main, assets_dir="imagenes")
