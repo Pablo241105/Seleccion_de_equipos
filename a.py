@@ -2,9 +2,13 @@ import flet as ft
 
 def main(page: ft.Page):
     page.title="SELECCION DE EQUIPOS"
-    EQUIPO=""
+    vEquipo= ["Aston Villa", "Man-United", "Juventus", "Real Madrid", "Al_Nassr"]
+    menu=ft.Dropdown(hint_text="Selecciona un equipo",width=250,on_change=cambiar_imagen)
 
-    def dropdown_changed(e):
+    for equipo in vEquipos:
+        menu.options.append(ft.dropdown.Option(equipo))
+
+    def cambiar_imagen(e):
         if (EQUIPOS.value == "Aston Villa"):
             EQUIPO = "imagenes/Aston-Villa.png"
             print(f"Aston Villa {EQUIPO}")
