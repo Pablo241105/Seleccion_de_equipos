@@ -5,21 +5,19 @@ def main(page: ft.Page):
 
     def cambiar_imagen(e):
         if (ddEquipo.value == "Aston Villa"):
-            EQUIPO = "imagenes/Aston-Villa.png"
-            print(f"Aston Villa {EQUIPO}")
+            imagenEquipo.src = "Aston-Villa.png"
         elif (ddEquipo.value == "Man United"):
-            EQUIPO = "imagenes/Man-United.png"
-            print(f"Man United {EQUIPO}")
+            imagenEquipo.src = "imagenes/Man-United.png"
+            
         elif (ddEquipo.value == "Juventus"):
-            EQUIPO = "imagenes/Juventus.png"
-            print(f"Juventus {EQUIPO}")
+            imagenEquipo.src = "imagenes/Juventus.png"
+            
         elif (ddEquipo.value == "Real Madrid"):
-            EQUIPO = "imagenes/Real Madrid.png"
-            print(f"Real Madrid {EQUIPO}")
+            imagenEquipo.src = "imagenes/Real Madrid.png"
+           
         else:
-            EQUIPO = "Al_Nassr.png"
-            print(f"Al-Nassr {EQUIPO}")
-
+            imagenEquipo.src = "Al_Nassr.png"
+          
         page.update()
     
     
@@ -34,8 +32,10 @@ def main(page: ft.Page):
         on_change=cambiar_imagen
     )
 
+    imagenEquipo = ft.Image(src="aa")
 
 
+    page.add (ddEquipo,imagenEquipo)
 
 
     #vEquipos= ["Aston Villa", "Man-United", "Juventus", "Real Madrid", "Al_Nassr"]
@@ -52,7 +52,7 @@ def main(page: ft.Page):
     #seleccionar_equipo=ft.FloatingActionButton(icon=ft.icons.ADD, on_click=GUARDAR)
     #page.add(seleccionar_equipo)
     
-    page.ad (Equipo)
+    
 
 
 ft.app(target=main,assets_dir="imagenes")
