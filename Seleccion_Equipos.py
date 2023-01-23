@@ -49,8 +49,8 @@ def main(page: ft.Page):
         vEquipos.append(cambiar_imagen)
     '''
 
-    #seleccionar_equipo=ft.FloatingActionButton(icon=ft.icons.ADD, on_click=GUARDAR)
-    #page.add(seleccionar_equipo)
+    btn_seleccionar_equipo=ft.FloatingActionButton(icon=ft.icons.ADD)
+    page.add(btn_seleccionar_equipo)
     
     
 
