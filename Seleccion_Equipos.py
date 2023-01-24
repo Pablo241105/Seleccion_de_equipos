@@ -10,7 +10,7 @@ def main(page: ft.Page):
         if (ddEquipo.value == "Aston Villa"):
             imagenEquipo.src = "Aston-Villa.png"
 
-        elif (ddEquipo.value == "Man United"):
+        elif (ddEquipo.value == "Man-United"):
             imagenEquipo.src = "imagenes/Man-United.png"
             
         elif (ddEquipo.value == "Juventus"):
@@ -25,23 +25,14 @@ def main(page: ft.Page):
         page.update()
     
     
-    ddEquipo = ft.Dropdown(label="Equipos",width=500,
-        options=[
-            ft.dropdown.Option("Aston Villa"),
-            ft.dropdown.Option("Man United"),
-            ft.dropdown.Option("Real Madrid"),
-            ft.dropdown.Option("Juventus"),
-            ft.dropdown.Option("Al-Nassr"),
-        ],
-        on_change=cambiar_imagen
-    )
+    ddEquipo = ft.Dropdown(label="Equipos",width=500,on_change=cambiar_imagen)
+
+    for equipo in vEquipos:
+        ddEquipo.options.append(ft.dropdown.Option(equipo))
 
     imagenEquipo = ft.Image(src="aa")
 
     page.add (ddEquipo,imagenEquipo)
-
-    for equipo in vEquipos:
-        ddEquipo.options.append(ft.dropdown.Option(equipo))
 
     #def GUARDAR():
         #cambiar_imagen = ft.dropdown.Option.get()
