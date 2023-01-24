@@ -34,11 +34,21 @@ def main(page: ft.Page):
 
     page.add (ddEquipo,imagenEquipo)
 
-    #def GUARDAR():
-        #cambiar_imagen = ft.dropdown.Option.get()
-        #vEquipos.append(cambiar_imagen)
+    for equipo in vEquipos:
+        ddEquipo.options.append(ft.dropdown.Option(equipo))
 
-    #seleccionar_equipo=ft.FloatingActionButton(icon=ft.icons.ADD, on_click=GUARDAR)
-    #page.add(seleccionar_equipo)
+    def GUARDAR(e):
+        if vEquiposSeleccionados.count(ddEquipo.value)== 0:
+            vEquiposSeleccionados.append(ddEquipo.value)
+            print(vEquiposSeleccionados)
+        else:
+            dlg = ft.AlertDialog(title=ft.Text("EQUIPO REPETIDO!!!"))
+            page.dialog = dlg
+            dlg.open = True
+            page.update()
 
+    btn_seleccionar_equipo=ft.FloatingActionButton(icon=ft.icons.ADD,on_click=GUARDAR)
+    page.add(btn_seleccionar_equipo)
+    
+    
 ft.app(target=main,assets_dir="imagenes")
