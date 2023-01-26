@@ -34,9 +34,6 @@ def main(page: ft.Page):
 
     page.add (ddEquipo,imagenEquipo)
 
-    for equipo in vEquipos:
-        ddEquipo.options.append(ft.dropdown.Option(equipo))
-
     def GUARDAR(e):
         if vEquiposSeleccionados.count(ddEquipo.value)== 0:
             vEquiposSeleccionados.append(ddEquipo.value)
