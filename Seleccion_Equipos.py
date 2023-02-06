@@ -2,10 +2,20 @@ import flet as ft
 
 def main(page: ft.Page):
     page.title="Seleccion de equipos"
-    vEquipos= ["Aston Villa", "Man-United", "Juventus", "Real Madrid", "Al_Nassr"]
+    vEquipos=[]
     vEquiposSeleccionados=[]
     lv = ft.ListView(expand=1, spacing=10, padding=20, auto_scroll=True)
-    
+
+    def cargarEquipos():
+        vEquipos = []
+        f = open("Cargar_Equipos.txt","r")
+
+        for linea in f:
+            vEquipos.append(linea)
+
+        f.close()
+        return vEquipos
+  
     def cambiar_imagen(e):
         if (ddEquipo.value == "Aston Villa"):
             imagenEquipo.src = "Aston-Villa.png"
