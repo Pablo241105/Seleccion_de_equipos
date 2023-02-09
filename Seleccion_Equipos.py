@@ -5,18 +5,21 @@ def main(page: ft.Page):
     #vEquipos=["Aston Villa","Man-United","Juventus","Real Madrid","Al_Nassr"]
     vEquiposSeleccionados=[]
 
-    def GUARDAR(e):
+    def seleccionar(e):
         sel=ddEquipo.value
         if vEquiposSeleccionados.count(sel)== 0:
             vEquiposSeleccionados.append(sel)
             print(vEquiposSeleccionados)
-            lv.controls.append(ft.Text(sel))      
-            page.update()       
+
+            fila = ft.Row(controls=[ft.Text(sel),ft.Image(src=imagenEquipo.src,width=50,height=50)])
+            lv.controls.append(fila)      
         else:
             dlg = ft.AlertDialog(title=ft.Text("EQUIPO REPETIDO!!!"))
             page.dialog = dlg
             dlg.open = True
-            page.update()
+        page.update()
+
+
 
     def cambiar_imagen(e):
         if (ddEquipo.value == "Aston Villa"):
@@ -31,31 +34,40 @@ def main(page: ft.Page):
         elif (ddEquipo.value == "Real Madrid"):
             imagenEquipo.src = "imagenes/Real Madrid.png"
            
-        elif (ddEquipo.value == "Al_Nassar"):
+        elif (ddEquipo.value == "Al_Nassr"):
             imagenEquipo.src = "imagenes/Al_Nassr.png"
 
         else: 
             imagenEquipo.src = "imagenes/Sin_foto.jpg"
         
         page.update()
-    
+
+    def GUARDAR(a):
+        f = open("seleccionados.txt","w")
+
+        for i in vEquiposSeleccionados:
+            f.write(i+"\n")
+
+        f.close()
+        
+
     def cargarEquipos():
         vEquipos = []
-        f = open("Cargar_Equipos.txt","r")
+        f = open("Equipos.txt","r")
 
         linea = f.readline()
         vEquipos = linea.split(sep=";")
 
         f.close()
+        
         return vEquipos
 
 
-
     imagenEquipo = ft.Image(src="aa")
-    btn_seleccionar_equipo=ft.FloatingActionButton(icon=ft.icons.ADD,on_click=GUARDAR)
-    page.add(btn_seleccionar_equipo,lv)
-    lv = ft.ListView(expand=1, spacing=10, padding=20, auto_scroll=True)
+    btn_seleccionar_equipo=ft.ElevatedButton(text="Seleccionar equipo",on_click=seleccionar)
+    btn_guardar=ft.FloatingActionButton(text="Guardar",on_click=GUARDAR,width=100)
     ddEquipo = ft.Dropdown(label="Equipos",width=500,on_change=cambiar_imagen)
+    lv = ft.ListView(expand=1, spacing=10, padding=20, auto_scroll=True) 
 
     vEquipos=cargarEquipos()
     print(vEquipos)
@@ -63,5 +75,5 @@ def main(page: ft.Page):
         ddEquipo.options.append(ft.dropdown.Option(equipo))
 
 
-    page.add (ddEquipo,imagenEquipo,btn_seleccionar_equipo,lv)
+    page.add (ddEquipo,imagenEquipo,btn_seleccionar_equipo,lv,btn_guardar)
 ft.app(target=main,assets_dir="imagenes")
